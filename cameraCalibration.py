@@ -12,7 +12,7 @@ SQUARE_SIZE = 27  # millimeters
 criteria = (cv.TERM_CRITERIA_EPS + cv.TERM_CRITERIA_MAX_ITER, 30, 0.001)
 
 
-calib_data_path = "calib_data"
+calib_data_path = "calib_data2"
 CHECK_DIR = os.path.isdir(calib_data_path)
 
 
@@ -38,7 +38,7 @@ objPoints3D = []  # 3d point in real world space
 imgPoints2D = []  # 2d points in image plane.
 
 # The images directory path
-image_dir_path = "images"
+image_dir_path = "images2"
 
 files = os.listdir(image_dir_path)
 for file in files:
@@ -66,6 +66,7 @@ h, w = image.shape[:2]
 ret, mtx, dist, rvecs, tvecs = cv.calibrateCamera(
     objPoints3D, imgPoints2D, grayScale.shape[::-1], None, None
 )
+
 print("--------------------------------------------------------------------------------------\n")
 print("CALIBRATED")
 print("--------------------------------------------------------------------------------------\n")
@@ -100,6 +101,7 @@ for file in files:
     undistortedCounter += 1
 
 print("Undistortion complete")
+
 #Reprojection Error 
 mean_error = 0
 
